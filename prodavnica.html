@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reptileggs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="slike/logo.png">
+</head>
+<body>
+    <div id="webkontejner">
+        <!-- Pocetak -->
+        <header id="bannerObjekat">
+            <div>
+            <h1>Reptileggs</h1>
+            <img src="slike/logo.png"></img>
+            </div>
+            <div class="slajder">
+                <div onclick="baner(false)">&#8678;</div>
+                <div onclick="baner(true)">&#8680;</div>
+            </div>
+        </header>
+        <nav class="navigacija">
+            <div class="meni-ikonica" onclick="hamburgerMeni()">&#9776;</div>
+            <ul class="nav-linkovi">
+                <li><a href="index.html">&#8962; Početna</a></li>
+                <li><a href="prodavnica.html">&#8364; Prodavnica</a></li>
+                <li><a href="onama.html">&#8505; O nama</a></li>
+                <li><a href="kontakt.html">&#9742; Kontakt</a></li>
+            </ul>
+        </nav>
+        <div class="sadrzaj-kontejner">
+            <div id="prodavnica" class="flex-vertikalno">
+                <section data-artikal="1">
+                    <img src="slike/leog.png"></img>
+                    <div>
+                    <h1>Jaje Leopardskog Geka</h1>
+                    <p>Leopardski Gekoi su laki za održavanje i odlični kućni ljubimci.</p>
+                    
+                    <input type="checkbox" onClick="dodajUKorpu(2400, this.checked, 0)">Računaj u korpi</input>
+                    <p><b>2400,00</b> din</p>
+                    </div>
+                </section>
+                <section data-artikal="2">
+                    <img src="slike/kpajton.png"></img>
+                    <div>
+                        <h1>Jaje Kraljevskog Pitona</h1>
+                        <p>Kraljevski Pitoni su poznati po svojoj pitomoj prirodi i prelepim šarama.</p>
+                        
+                        <input type="checkbox" onClick="dodajUKorpu(7500, this.checked, 1)">Računaj u korpi</input>
+                    <p><b>7500,00</b> din</p>
+                    </div>
+                </section>
+                <section data-artikal="3">
+                    <img src="slike/zigu.png"></img>
+                    <div>
+                    <h1>Jaje Zelene Iguane</h1>
+                    <p>Potrebno veće stanište i posebna nega.</p>
+                    
+                    <input type="checkbox" onClick="dodajUKorpu(5000, this.checked, 2)">Računaj u korpi</input>
+                    <p><b>5000,00</b> din</p>
+                    </div>
+                </section>
+                <section data-artikal="4">
+                    <img src="slike/jemenkam.png"></img>
+                    <div>
+                    <h1>Jaje Jemenskog Kameleona</h1>
+                    <p>Kameleoni su fascinantni reptili sa jedinstvenom sposobnošću menjanja boje.</p>
+                    
+                    <input type="checkbox" onClick="dodajUKorpu(6250, this.checked, 3)">Računaj u korpi</input>
+                    <p><b>6250,00</b> din</p>
+                    </div>
+                </section>
+            </div>
+
+            <div id="porudzbina">
+                <form action="racun.html" method="GET" target="_blank">
+                    <h3>Pregled porudzbine</h3>
+                    <label for="ime">Ime*</label><br>
+                    <input type="text" name="ime" id="ime" required></input><br>
+
+                    <label for="prezime">Prezime*</label><br>
+                    <input name="prezime" id="prezime" required></input><br>
+
+                    <label for="adresa">Adresa*</label><br>
+                    <input id="adresa" name="adresa" required></input><br>
+
+                    <label for="ptt">Poštanski Broj*</label><br>
+                    <input id="ptt" name="ptt" required></input><br>
+
+                    <label for="grad">Grad*</label><br>
+                    <input id="grad" name="grad" required></input>
+                    
+                    <br><br>
+
+                    <label for="totalCena">Totalna cena</label>
+
+                    <input id="totalCena" name="totalCena" readonly></input><br>
+                    <input id="naruciDugme" type="submit" value="Naruči"  disabled></input>
+                </form>
+            </div>
+        </div>
+        <footer>
+            <h2>Izradio Veljko Kovaevic SI 17/21</h2>
+        </footer>
+        <!-- Kraj -->
+    </div>
+    <script src="script.js"></script>
+</body>
+    <script>
+        let selektovanproizvod = [false, false, false, false]
+        const bannerFotografije = ['slike/baner/ban.avif', 'slike/baner/plavi.webp', 'slike/baner/reptil.jpg'];
+        let trenutniBanner = 0;
+        let konacaniznos = 0;
+
+        function baner(napred){
+            if(napred){
+                trenutniBanner++;
+                if(trenutniBanner > 2) trenutniBanner = 0;
+            } else {
+                trenutniBanner--;
+                if(trenutniBanner < 0) trenutniBanner = 2;   
+            }
+
+            bannerObjekat.style.backgroundImage = "url("+ bannerFotografije[trenutniBanner]+ ')';
+        }
+
+        function hamburgerMeni() {
+            const navLinks = document.querySelector('.nav-linkovi');
+            navLinks.classList.toggle('show');
+            }
+
+        function dodajUKorpu(iznos, dodato, proizvodId){
+            if(dodato) {
+                konacaniznos += iznos;
+                selektovanproizvod[proizvodId] = true;
+            } else {
+                konacaniznos -= iznos;
+                selektovanproizvod[proizvodId] = false;
+            }
+
+            totalCena.value = konacaniznos;
+            console.log(konacaniznos);
+
+            if(konacaniznos == 0) naruciDugme.disabled = true; 
+            else naruciDugme.disabled = false;
+        }
+
+
+    </script>
+</html>

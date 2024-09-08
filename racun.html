@@ -1,0 +1,77 @@
+<html>
+    <head>
+
+        <style>
+            html {
+                font-family: "Tahoma";
+            }
+
+            body div {
+                width: 800px;
+                margin: 10px;
+                padding: 10px;
+                color:white;
+                background-color:#303030;
+            }
+            
+            div p {
+                text-align:right;
+            }
+
+            div section{
+                background-color:#353535;
+                padding-top: 2px;
+                padding-bottom: 10px;
+                margin-bottom: 30px;
+            }
+
+            div section p {
+                text-align: left;
+            }
+
+            #stampaj {
+                color:black;
+                background: linear-gradient(45deg, white, silver);
+                padding: 2px 8px;
+                font-weight: bold;
+                cursor: pointer;
+            }
+        </style>
+
+    </head>
+    <body>
+        <div>
+        <h1>Reptileggs Faktura</h1>
+        <h4 id="datum">00.00.00</h2>
+            <p>
+                <span>Reptileggs d.o.o</span><br>
+                <span>Bulevar Milutina Stanivukovica 9a</span><br>
+                <span>Beograd 11070</span>
+            </p>
+        <section>
+            <h4>Mušterija</h4>
+            <p>
+                <span id="ime">Ime</span><br>
+                <span id="adresa">ADRESA</span><br>
+                <span id="gradptt">Grad PTT</span>
+            </p>
+            <h4>Lista troškova:</h4>
+            <p>Jaja guštera - <span id="totalCena"></span></p>
+        </section>
+        <span id="stampaj" onclick="window.print();">Štampaj</span>
+        </div>
+        
+
+    </body>
+
+    <script>
+        document.getElementById('datum').innerHTML = new Date(Date.now());
+
+        const getParametri = new URLSearchParams(window.location.search);
+
+        ime.innerHTML = getParametri.get("ime") + ' ' + getParametri.get("prezime");
+        adresa.innerHTML = getParametri.get("adresa");
+        gradptt.innerHTML = getParametri.get("grad") + ' ' + getParametri.get("ptt");
+        totalCena.innerHTML = getParametri.get("totalCena");
+    </script>
+</html>

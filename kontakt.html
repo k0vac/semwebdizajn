@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reptileggs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/slike/logo.png">
+</head>
+<body>
+    <div id="webkontejner">
+        <!-- Pocetak -->
+        <header id="bannerObjekat">
+            <div>
+            <h1>Reptileggs</h1>
+            <img src="slike/logo.png"></img>
+            </div>
+            <div class="slajder">
+                <div onclick="baner(false)">&#8678;</div>
+                <div onclick="baner(true)">&#8680;</div>
+            </div>
+        </header>
+        <nav class="navigacija">
+            <div class="meni-ikonica" onclick="hamburgerMeni()">&#9776;</div>
+            <ul class="nav-linkovi">
+                <li><a href="index.html">&#8962; Početna</a></li>
+                <li><a href="prodavnica.html">&#8364; Prodavnica</a></li>
+                <li><a href="onama.html">&#8505; O nama</a></li>
+                <li><a href="kontakt.html">&#9742; Kontakt</a></li>
+            </ul>
+        </nav>
+        <div class="sadrzaj-kontejner">
+            <div class="flex-vertikalno flex-centriraj">
+                <div id="kontaktdetalji">
+                    <h2>Kontakt</h2>
+                    <h4>Adresa:</h4>
+                    <p>
+                        <span>Reptileggs d.o.o</span><br>
+                        <span>Bulevar Milutina Stanivukovica 9a</span><br>
+                        <span>Beograd 11070</span>
+                    </p>
+                    <p>
+                        <b>Telefon:</b> <span>+381 62 / 522-5120</span><br>
+                        <b>E-mail:</b>  <span>kontakt@Reptileggs.rs</span><br>
+                        <b>Radno Vreme:</b>  <span>9h-16h svaki dan</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <h2>Izradio Veljko Kovaevic SI 17/21</h2>
+        </footer>
+        <!-- Kraj -->
+    </div>
+    <script src="script.js"></script>
+</body>
+    <script>
+        const bannerFotografije = ['slike/baner/ban.avif', 'slike/baner/plavi.webp', 'slike/baner/reptil.jpg'];
+        let trenutniBanner = 0;
+
+        function baner(napred){
+            if(napred){
+                trenutniBanner++;
+                if(trenutniBanner > 2) trenutniBanner = 0;
+            } else {
+                trenutniBanner--;
+                if(trenutniBanner < 0) trenutniBanner = 2;   
+            }
+
+            bannerObjekat.style.backgroundImage = "url("+ bannerFotografije[trenutniBanner]+ ')';
+        }
+
+        function hamburgerMeni() {
+    const navLinks = document.querySelector('.nav-linkovi');
+    navLinks.classList.toggle('show');
+    }
+    </script>
+</html>

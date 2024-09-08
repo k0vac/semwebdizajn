@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reptileggs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/slike/logo.png">
+</head>
+<body>
+    <div id="webkontejner">
+        <!-- Pocetak -->
+        <header id="bannerObjekat">
+            <div>
+            <h1>Reptileggs</h1>
+            <img src="slike/logo.png"></img>
+            </div>
+            <div class="slajder">
+                <div onclick="baner(false)">&#8678;</div>
+                <div onclick="baner(true)">&#8680;</div>
+            </div>
+        </header>
+        <nav class="navigacija">
+            <div class="meni-ikonica" onclick="hamburgerMeni()">&#9776;</div>
+            <ul class="nav-linkovi">
+                <li><a href="index.html">&#8962; Početna</a></li>
+                <li><a href="prodavnica.html">&#8364; Prodavnica</a></li>
+                <li><a href="onama.html">&#8505; O nama</a></li>
+                <li><a href="kontakt.html">&#9742; Kontakt</a></li>
+            </ul>
+        </nav>
+        <div class="sadrzaj-kontejner">
+            <div class="flex-vertikalno">
+                <section>
+                    <div class="sekcijaKocka">
+                    <h2>Dobrodosli!</h2>
+                    <p>
+                        Reptileggs je kompanija specijalizovana za prodaju jaja reptila za kućne ljubimce. Pružamo širok izbor svežih i zdravih jaja različitih vrsta reptila, uključujući guštere, zmije i kornjače. Naša misija je da ljubiteljima reptila omogućimo jednostavan i pouzdan način nabavke kvalitetnih jaja, uz brzu dostavu i stručne savete o pravilnom uzgoju.
+                    </p>
+                    </div>
+                    <img src="slike/iguana.jpg"></img>
+                </section>
+                <section>
+                    <div class="sekcijaKocka">
+                        <h2>Dodatno</h2>
+                        <p>
+                            Na našem sajtu, reptileggs.com, možete pronaći detaljne informacije o svakoj vrsti jaja koje nudimo, uključujući savete za inkubaciju i brigu o mladuncima. Takođe, redovno objavljujemo blogove i članke sa korisnim informacijama o reptilima, njihovom ponašanju i ishrani. Pored toga, naši korisnici mogu postaviti pitanja i dobiti podršku od našeg stručnog tima, kao i pristupiti forumu gde mogu deliti iskustva i savete sa drugim ljubiteljima reptila.
+                        </p>
+                        </div>
+                        <img src="slike/kpajton.png"></img>
+                </section>
+                <section class="sekcijaLinkova">
+                    <section>
+                        <h2>Poseti prodavnicu!</h2>
+                        <img src="slike/jaja.webp"></img>
+                        <p>Pozivamo vas da posetite našu prodavnicu i otkrijete bogat asortiman reptilskih jaja koje nudimo. </p>
+                        <a class="linkDugme" href="prodavnica.html">Prodavnica</a>
+                    </section>
+                    
+                    <section>
+                        <h2>O nama!</h2>
+                        <img src="slike/onama.jpg"></img>
+                        <p>Upoznajte naše udruženje sa ujedinjenom misijom da omogućimo reptilima da opstanu u savremena okruženja.</p>
+                        <a class="linkDugme" href="onama.html">Poseti</a>
+                    </section>
+
+                    <section>
+                        <h2>Kontaktirajte nas!</h2>
+                        <img src="slike/leopardgeko.jpg"></img>
+                        <p>Imate pitanje za rukovanje sa reptlima? Slobodno nas pitajte u kontakt formi!</p>
+                        <a class="linkDugme" href="kontakt.html">Kontaktirajte</a>
+                    </section>
+
+                </section>
+            </div>
+        </div>
+        <footer>
+            <h2>Izradio Veljko Kovaevic SI 17/21</h2>
+        </footer>
+        <!-- Kraj -->
+    </div>
+    <script src="script.js"></script>
+</body>
+    <script>
+        const bannerFotografije = ['slike/baner/ban.avif', 'slike/baner/plavi.webp', 'slike/baner/reptil.jpg'];
+        let trenutniBanner = 0;
+
+        function baner(napred){
+            if(napred){
+                trenutniBanner++;
+                if(trenutniBanner > 2) trenutniBanner = 0;
+            } else {
+                trenutniBanner--;
+                if(trenutniBanner < 0) trenutniBanner = 2;   
+            }
+
+            bannerObjekat.style.backgroundImage = "url("+ bannerFotografije[trenutniBanner]+ ')';
+        }
+
+        function hamburgerMeni() {
+    const navLinks = document.querySelector('.nav-linkovi');
+    navLinks.classList.toggle('show');
+    }
+    </script>
+</html>

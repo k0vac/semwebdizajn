@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reptileggs</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="/slike/logo.png">
+</head>
+<body>
+    <div id="webkontejner">
+        <!-- Pocetak -->
+        <header id="bannerObjekat">
+            <div>
+            <h1>Reptileggs</h1>
+            <img src="slike/logo.png"></img>
+            </div>
+            <div class="slajder">
+                <div onclick="baner(false)">&#8678;</div>
+                <div onclick="baner(true)">&#8680;</div>
+            </div>
+        </header>
+        <nav class="navigacija">
+            <div class="meni-ikonica" onclick="hamburgerMeni()">&#9776;</div>
+            <ul class="nav-linkovi">
+                <li><a href="index.html">&#8962; Početna</a></li>
+                <li><a href="prodavnica.html">&#8364; Prodavnica</a></li>
+                <li><a href="onama.html">&#8505; O nama</a></li>
+                <li><a href="kontakt.html">&#9742; Kontakt</a></li>
+            </ul>
+        </nav>
+        <div class="sadrzaj-kontejner">
+            <div class="flex-vertikalno flex-centriraj">
+                <section>
+                    <div class="sekcijaKocka">
+                    <h2>Ko je Reptileggs?</h2>
+                    <p>
+                        Reptileggs d.o.o. je specijalizovana prodavnica osnovana s ciljem pružanja visokokvalitetnih jaja guštera za ljubitelje reptila i profesionalne uzgajivače. Sedište prodavnice nalazi se u Novom Beogradu, a svojim kupcima nudi širok asortiman jaja raznih vrsta guštera, uključujući retke i egzotične vrste.
+                    </p>
+                    </div>
+                    <img src="slike/logo320p.png"></img>
+                </section>
+                <section>
+                    <div class="sekcijaKocka">
+                    <h2>Kvalitet</h2>
+                    <p>
+                        Stavljamo akcenat na zdravlje i dobrobit životinja, 
+                        te svaki proizvod prolazi kroz rigorozne kontrole kvaliteta kako bi se osigurala njegova svežina i mogućnost uspešnog izleženja. 
+                        Prodavnica takođe nudi savetodavne usluge i podršku u vezi sa inkubacijom i brigom o gušterima, pružajući korisnicima sve što im je potrebno za uspešno gajenje reptila.
+
+                        <br><br>
+                        Uz strast prema reptilima i posvećenost kvalitetu, Reptileggs d.o.o. je postala jedno od vodećih imena u industriji, privlačeći kupce iz celog regiona.
+                    </p>
+                    </div>
+                    <img src="slike/iguana.jpg"></img>
+
+                    
+                </section>
+            </div>
+        </div>
+        <footer>
+            <h2>Izradio Veljko Kovaevic SI 17/21</h2>
+        </footer>
+        <!-- Kraj -->
+    </div>
+    <script src="script.js"></script>
+</body>
+    <script>
+        const bannerFotografije = ['slike/baner/ban.avif', 'slike/baner/plavi.webp', 'slike/baner/reptil.jpg'];
+        let trenutniBanner = 0;
+
+        function baner(napred){
+            if(napred){
+                trenutniBanner++;
+                if(trenutniBanner > 2) trenutniBanner = 0;
+            } else {
+                trenutniBanner--;
+                if(trenutniBanner < 0) trenutniBanner = 2;   
+            }
+
+            bannerObjekat.style.backgroundImage = "url("+ bannerFotografije[trenutniBanner]+ ')';
+        }
+
+        function hamburgerMeni() {
+    const navLinks = document.querySelector('.nav-linkovi');
+    navLinks.classList.toggle('show');
+    }
+    </script>
+</html>
