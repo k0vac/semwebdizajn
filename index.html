@@ -85,6 +85,8 @@
         const bannerFotografije = ['slike/baner/ban.avif', 'slike/baner/plavi.webp', 'slike/baner/reptil.jpg'];
         let trenutniBanner = 0;
 
+        
+
         function baner(napred){
             if(napred){
                 trenutniBanner++;
@@ -96,6 +98,8 @@
 
             bannerObjekat.style.backgroundImage = "url("+ bannerFotografije[trenutniBanner]+ ')';
         }
+
+        
 
         function hamburgerMeni() {
     const navLinks = document.querySelector('.nav-linkovi');

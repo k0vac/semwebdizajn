@@ -74,7 +74,7 @@
             </div>
 
             <div id="porudzbina">
-                <form action="racun.html" method="GET" target="_blank">
+                <form id="porudzbinaforma" action="racun.html" method="GET" target="_blank">
                     <h3>Pregled porudzbine</h3>
                     <label for="ime">Ime*</label><br>
                     <input type="text" name="ime" id="ime" required></input><br>
@@ -96,7 +96,7 @@
                     <label for="totalCena">Totalna cena</label>
 
                     <input id="totalCena" name="totalCena" readonly></input><br>
-                    <input id="naruciDugme" type="submit" value="Naruči"  disabled></input>
+                    <input id="naruciDugme" type="button" value="Naruči"  onclick="validiraj_formu();" disabled></input>
                 </form>
             </div>
         </div>
@@ -129,6 +129,51 @@
             const navLinks = document.querySelector('.nav-linkovi');
             navLinks.classList.toggle('show');
             }
+
+
+        //VALIDACIJA FORME
+        function validiraj_formu() {
+            var form = document.forms['porudzbinaforma'];
+            var valid = true;
+            switch(""){
+                case form.ime.value:
+                    alert("Ime uneto je prazno!");
+                    form.ime.focus();
+                    valid = false;
+                break;
+                case form.prezime.value:
+                    alert("Prezime uneto je prazno!");
+                    form.prezime.focus();
+                    valid = false;
+                break;
+                case form.adresa.value:
+                    alert("Adresa uneto je prazno!");
+                    form.adresa.focus();
+                    valid = false;
+                break;
+                case form.ptt.value:
+                    alert("Postanski broj uneto je prazno!");
+                    form.ptt.focus();
+                    valid = false;
+                break;
+                case form.grad.value:
+                    alert("Grad uneto je prazno!");
+                    form.grad.focus();
+                    valid = false;
+                break;
+            } 
+
+            //Provera postanskog broja, da li je broj
+            if(isNaN(form.ptt.value)){
+                alert("Postanski broj mora biti broj!");
+                form.ptt.focus();
+                valid = false;
+            }
+
+            if (valid) {
+                form.submit();
+            }
+        }
 
         function dodajUKorpu(iznos, dodato, proizvodId){
             if(dodato) {
